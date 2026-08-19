@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite IIT — SEO Tool &amp; Team Investment Proposal</title>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#150E2B; --surface:#221A4D; --surface-2:#2A2158; --border:#3D2E6B;
+  --purple:#7B5FC4; --purple-2:#9A82D9; --pink:#F0729E; --pink-2:#F5A3C7;
+  --text:#F3F0FA; --text-dim:#B9AEDA;
+  --green:#3FBE7A; --green-bg:#0F2A1D; --red:#F0837C; --red-bg:#3A1720;
+  --blue:#6FC3E8; --blue-bg:#142A3D; --amber:#E8B34E; --amber-bg:#332711;
+  --radius:18px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; overflow:hidden;}
+body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:700; letter-spacing:-0.01em; color:var(--text);}
+a{color:inherit;}
+.texture{position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(ellipse at 15% 10%, rgba(123,95,196,0.16), transparent 55%),
+             radial-gradient(ellipse at 85% 90%, rgba(240,114,158,0.10), transparent 55%);}
+
+/* ---------- DECK / SLIDES (slideable, one visible at a time) ---------- */
+.deck{position:relative; width:100vw; height:100vh; overflow:hidden;}
+.slide{position:absolute; inset:0; display:none; flex-direction:column; justify-content:flex-start; align-items:center;
+  padding:56px 64px 90px; opacity:0; transition:opacity .3s ease; overflow-y:auto;}
+.slide.active{display:flex; opacity:1;}
+.slide-inner{max-width:1080px; width:100%; margin-top:auto; margin-bottom:auto;}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--purple-2); margin-bottom:14px;}
+.title{font-size:32px; margin-bottom:14px; color:var(--pink-2);}
+.lede{font-size:15px; color:var(--text-dim); max-width:760px; margin-bottom:22px;}
+
+/* ---------- TITLE / COVER SLIDE ---------- */
+.title-slide{text-align:center; align-items:center;}
+.title-slide h1{font-size:46px; line-height:1.15; margin-bottom:18px; color:var(--pink-2);
+  background:linear-gradient(135deg,var(--pink-2),var(--purple-2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;}
+.title-slide .subtitle{font-size:16px; color:var(--text-dim); max-width:640px; margin:0 auto 28px;}
+.title-tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+.title-tag{font-size:12.5px; font-weight:500; padding:8px 16px; border-radius:20px; border:1px solid var(--border);
+  background:var(--surface); color:var(--text-dim);}
+.title-tag.strong{background:var(--surface-2); color:var(--pink-2); border-color:var(--pink); font-weight:600;}
+
+/* ---------- AGENDA ---------- */
+.agenda-list{display:flex; flex-direction:column; gap:0; max-width:640px; margin:0 auto;}
+.agenda-item{display:flex; align-items:center; gap:18px; padding:16px 4px; border-bottom:1px solid var(--border);}
+.agenda-num{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--pink-2); width:28px; flex-shrink:0;}
+.agenda-icon{width:38px; height:38px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:17px; color:var(--pink-2); flex-shrink:0;}
+.agenda-text b{font-size:15px; display:block;}
+.agenda-text span{font-size:12.5px; color:var(--text-dim);}
+
+/* ---------- GENERIC BUILDING BLOCKS (reused across sections) ---------- */
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+.grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:18px;}
+.card-purple{background:linear-gradient(155deg,var(--surface-2),var(--surface)); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px;}
+.card-outline{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+.card-purple h3, .card-outline h3{font-size:16px; margin-bottom:12px; display:flex; align-items:center; gap:8px; color:var(--pink-2);}
+.card-purple ul, .card-outline ul{list-style:none; display:flex; flex-direction:column; gap:9px;}
+.card-purple li, .card-outline li{font-size:13.5px; color:var(--text-dim); padding-left:18px; position:relative;}
+.card-purple li:before, .card-outline li:before{content:"→"; position:absolute; left:0; color:var(--pink);}
+.card-purple li b, .card-outline li b{color:var(--text); font-weight:600;}
+
+.callout{display:flex; gap:12px; align-items:flex-start; padding:16px 18px; border-radius:14px; font-size:13.5px; margin-bottom:14px;}
+.callout i{font-size:18px; margin-top:1px; flex-shrink:0;}
+.callout.blue{background:var(--blue-bg); border:1px solid #2A5578; color:#CFE9F7;}
+.callout.blue i{color:var(--blue);}
+.callout.red{background:var(--red-bg); border:1px solid #7A3038; color:#F7D4D2;}
+.callout.red i{color:var(--red);}
+.callout.green{background:var(--green-bg); border:1px solid #2E6B44; color:#CFEEDC;}
+.callout.green i{color:var(--green);}
+.callout.amber{background:var(--amber-bg); border:1px solid #6B5324; color:#F5E3BE;}
+.callout.amber i{color:var(--amber);}
+.callout b{color:inherit;}
+
+.stat-trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px;}
+.stat-trio-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px;}
+.stat-block{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; text-align:center;}
+.stat-block .big{font-family:'JetBrains Mono',monospace; font-size:26px; font-weight:600; color:var(--pink-2); margin-bottom:4px;}
+.stat-block .lbl{font-size:11.5px; color:var(--text-dim); line-height:1.35;}
+
+table.data-table{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px;}
+table.data-table th{text-align:left; padding:9px 12px; color:var(--purple-2); font-weight:600; font-size:11.5px;
+  text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--border);}
+table.data-table td{padding:9px 12px; border-bottom:1px solid var(--border); color:var(--text);}
+table.data-table tr:last-child td{border-bottom:none;}
+.num-cell{font-family:'JetBrains Mono',monospace; text-align:right;}
+.hl{color:var(--pink-2); font-weight:600;}
+
+.donut-row{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+.donut-legend{display:flex; flex-direction:column; gap:6px;}
+.legend-item{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--text-dim);}
+.legend-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
+.legend-item b{color:var(--text);}
+
+.timeline-row{display:flex; align-items:stretch; gap:0; margin:26px 0;}
+.timeline-node{flex:1; position:relative; padding:0 10px; text-align:center;}
+.timeline-node:not(:last-child):after{content:""; position:absolute; top:20px; right:-10px; width:calc(100% + 20px); height:2px; background:var(--border);}
+.timeline-dot{width:40px; height:40px; border-radius:50%; background:var(--surface-2); border:2px solid var(--pink); margin:0 auto 10px;
+  display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--pink-2); position:relative; z-index:1;}
+.timeline-node h5{font-size:13.5px; margin-bottom:4px;}
+.timeline-node p{font-size:11.5px; color:var(--text-dim);}
+
+/* ---------- NAVIGATION UI (slideable controls) ---------- */
+.nav-controls{position:fixed; bottom:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between;
+  padding:14px 26px; background:linear-gradient(0deg, rgba(21,14,43,0.97), rgba(21,14,43,0.85) 70%, transparent);
+  backdrop-filter:blur(10px);}
+.nav-left{display:flex; align-items:center; gap:14px;}
+.nav-brand{font-family:'Playfair Display',serif; font-weight:700; font-size:14px; color:var(--pink-2); display:flex; align-items:center; gap:7px;}
+.slide-counter{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text-dim);}
+.progress-track{position:fixed; top:0; left:0; right:0; height:3px; background:var(--border); z-index:201;}
+.progress-fill{height:100%; background:linear-gradient(90deg,var(--purple),var(--pink)); transition:width .3s ease; width:0%;}
+.nav-right{display:flex; align-items:center; gap:8px;}
+.ctrl-btn{width:38px; height:38px; border-radius:10px; background:var(--surface); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text); font-size:16px; transition:all .15s ease;}
+.ctrl-btn:hover{background:var(--surface-2); color:var(--pink-2); border-color:var(--pink);}
+.ctrl-btn.disabled{opacity:.3; pointer-events:none;}
+.jump-btn{font-size:12px; padding:9px 14px; border-radius:10px; background:var(--surface); border:1px solid var(--border);
+  color:var(--text-dim); cursor:pointer; display:flex; align-items:center; gap:6px; transition:all .15s ease;}
+.jump-btn:hover{color:var(--text); border-color:var(--purple-2);}
+
+/* Optional-slide badge */
+.opt-badge{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:600; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--amber); background:var(--amber-bg); border:1px solid #6B5324; padding:4px 10px; border-radius:20px; margin-bottom:10px;}
+
+/* Jump menu overlay */
+#jumpMenu{position:fixed; inset:0; z-index:300; background:rgba(21,14,43,0.96); backdrop-filter:blur(6px);
+  display:none; align-items:center; justify-content:center; padding:40px;}
+#jumpMenu.open{display:flex;}
+.jump-panel{max-width:900px; width:100%; max-height:80vh; overflow-y:auto; background:var(--surface); border:1px solid var(--border);
+  border-radius:20px; padding:28px;}
+.jump-panel h3{font-size:18px; margin-bottom:16px; color:var(--pink-2);}
+.jump-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.jump-slide-btn{text-align:left; font-size:12.5px; padding:10px 14px; border-radius:10px; background:var(--surface-2);
+  border:1px solid var(--border); color:var(--text-dim); cursor:pointer; display:flex; align-items:center; gap:8px;}
+.jump-slide-btn:hover{color:var(--text); border-color:var(--pink);}
+.jump-slide-btn .n{font-family:'JetBrains Mono',monospace; color:var(--purple-2); flex-shrink:0;}
+.jump-close{position:absolute; top:24px; right:34px; cursor:pointer; font-size:22px; color:var(--text-dim);}
+
+.mini-table{width:100%; border-collapse:collapse; margin-top:10px;}
+.mini-table th{font-size:10.5px; text-transform:uppercase; color:var(--text-dim); text-align:left; padding:6px 8px; border-bottom:1px solid var(--border);}
+.mini-table td{padding:9px 8px; font-size:12.5px; border-bottom:1px solid var(--border); color:var(--text-dim);}
+.mini-table tr:last-child td{border-bottom:none;}
+.mini-table td.hl{color:var(--pink-2); font-weight:600;}
+.mini-table td:first-child{color:var(--text); font-weight:500;}
+
+/* ---------- RANK TABLE (reused from GBP source deck for raw-data slides) ---------- */
+.rank-table{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px;}
+.rank-table th{text-align:left; padding:9px 12px; color:var(--purple-2); font-weight:600; font-size:11.5px;
+  text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--border);}
+.rank-table td{padding:9px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle;}
+.rank-table tr:last-child td{border-bottom:none;}
+.rank-table td.kw{color:var(--text); font-weight:500;}
+.rank-table th.branch-col, .rank-table td.branch-col{text-align:center; width:100px;}
+.rankval{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; min-width:20px; text-align:left;}
+.rankval.good{color:var(--green);}
+.rankval.mid{color:var(--amber);}
+.rankval.bad{color:var(--red);}
+.rankval.na{color:var(--text-dim); font-style:italic;}
+.rankpill{display:inline-flex; align-items:center; gap:6px;}
+.rankbar{position:relative; width:46px; height:3px; background:var(--border); border-radius:2px; display:inline-block;}
+.rankdot{position:absolute; top:50%; width:7px; height:7px; border-radius:50%; transform:translate(-50%,-50%);}
+.nabar{width:46px; height:3px; background:var(--border); border-radius:2px; display:inline-block; opacity:.4;}
+@media(max-width:900px){
+  html,body{overflow-x:hidden;}
+  .rank-table,.data-table,.mini-table{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;}
+  .grid-2,.grid-3,.stat-trio,.stat-trio-4{grid-template-columns:1fr;}
+  .title-slide h1{font-size:32px;}
+  .slide{padding:40px 20px 108px; overflow-x:hidden; -webkit-overflow-scrolling:touch;}
+  .card-purple,.card-outline{padding:18px;}
+  .timeline-row{flex-direction:column; align-items:stretch; gap:16px; margin:20px 0;}
+  .timeline-node{padding:0; text-align:left; display:flex; align-items:flex-start; gap:14px;}
+  .timeline-node:not(:last-child):after{display:none;}
+  .timeline-dot{margin:0; flex-shrink:0;}
+  .nav-brand .brand-text{display:none;}
+  .jump-btn .jump-text{display:none;}
+  .jump-btn{padding:9px 11px;}
+  .nav-left{gap:10px;}
+  .nav-controls{padding:12px 14px calc(12px + env(safe-area-inset-bottom));}
+  .jump-grid{grid-template-columns:1fr;}
+  .jump-panel{padding:20px; max-height:78vh;}
+  #jumpMenu{padding:18px;}
+}
+@media(max-width:480px){
+  .title-slide h1{font-size:25px;}
+  .title-slide .subtitle{font-size:13.5px;}
+  .title{font-size:22px;}
+  .lede{font-size:13px;}
+  .eyebrow{font-size:11px;}
+  .slide{padding:30px 15px 108px;}
+  .card-purple,.card-outline{padding:15px;}
+  .stat-block{padding:12px;}
+  .stat-block .big{font-size:20px;}
+  .stat-block .lbl{font-size:10.5px;}
+  .ctrl-btn{width:34px; height:34px; font-size:14px;}
+  .slide-counter{font-size:11px;}
+  .nav-brand{font-size:12.5px;}
+  table.data-table, table.mini-table, table.rank-table{font-size:11.5px !important;}
+}
+</style>
+</head>
+<body>
+<div class="texture"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="deck" id="deck">
+<section class="slide active title-slide" data-section="Cover" data-slide="1">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-presentation"></i> Elite IIT · Investment Proposal</div>
+<h1>Tool &amp; Team Investment Plan</h1>
+<p class="subtitle">Why growth work keeps stalling, what it's costing us, and a 3-month plan to fix it — Semrush, Claude, and a small execution team.</p>
+<div class="title-tags">
+<div class="title-tag strong"><i class="ti ti-calendar"></i> August 2026</div>
+<div class="title-tag">4 branches</div>
+<div class="title-tag">Prepared by Umair Abdullah</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Cover" data-slide="2">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-details"></i> What we'll cover</div>
+<h2 class="title">Agenda</h2>
+<div class="agenda-list">
+<div class="agenda-item"><span class="agenda-num">01</span><div class="agenda-icon"><i class="ti ti-clipboard-list"></i></div>
+<div class="agenda-text"><b>Current Work Status</b><span>Every task logged Aug 1–15, completed vs. stuck</span></div></div>
+<div class="agenda-item"><span class="agenda-num">02</span><div class="agenda-icon"><i class="ti ti-alert-triangle"></i></div>
+<div class="agenda-text"><b>Why Work Gets Stuck</b><span>The root cause, not just symptoms</span></div></div>
+<div class="agenda-item"><span class="agenda-num">03</span><div class="agenda-icon"><i class="ti ti-clock"></i></div>
+<div class="agenda-text"><b>Real Time Cost</b><span>Before vs. after, in days saved</span></div></div>
+<div class="agenda-item"><span class="agenda-num">04</span><div class="agenda-icon"><i class="ti ti-tools"></i></div>
+<div class="agenda-text"><b>Tools + Team</b><span>What each one solves, and who owns what</span></div></div>
+<div class="agenda-item"><span class="agenda-num">05</span><div class="agenda-icon"><i class="ti ti-cash"></i></div>
+<div class="agenda-text"><b>3-Month Budget &amp; Plan</b><span>What we're asking for, month by month</span></div></div>
+<div class="agenda-item"><span class="agenda-num">06</span><div class="agenda-icon"><i class="ti ti-alert-circle"></i></div>
+<div class="agenda-text"><b>Webinar Blocker</b><span>A live example of the same problem, happening now</span></div></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="3">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-clipboard-list"></i> Section 01 · Aug 1–15</div>
+<h2 class="title">82 tasks logged. Here's what actually happened.</h2>
+<p class="lede">Every task tracked in the daily To-Do log across 11 working days — not an estimate, the actual record.</p>
+<div class="stat-trio-4">
+<div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">27</div><div class="lbl">Done<br/>(33%)</div></div>
+<div class="stat-block" style="border-color:var(--red);"><div class="big" style="color:var(--red);">21</div><div class="lbl">Pending<br/>(26%)</div></div>
+<div class="stat-block" style="border-color:var(--amber);"><div class="big" style="color:var(--amber);">18</div><div class="lbl">Partially done<br/>(22%)</div></div>
+<div class="stat-block"><div class="big">16</div><div class="lbl">To Do / Blocked<br/>(19%)</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-trending-up"></i>Growth work</h3>
+<ul>
+<li>Hub pages, schema, backlinks, content, competitor research, ad creatives</li>
+<li><b>50 tasks</b> — only <b>18% completed</b></li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-tool"></i>Maintenance / admin</h3>
+<ul>
+<li>Fixes, corrections, daily tracking logs</li>
+<li><b>28 tasks</b> — <b>61% completed</b></li>
+</ul>
+</div>
+</div>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div><b>The gap is the story:</b> growth work — the work that actually moves rankings and leads — completes at roughly a third the rate of maintenance work. That's not a motivation problem. It's what happens when one person carries every discipline solo.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="4">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-table"></i> Section 01 · Full task log (1 of 4)</div>
+<h2 class="title">Aug 4 – Aug 6</h2>
+<p class="lede">The complete, unedited task log for this range — every task, exactly as logged.</p>
+<table class="data-table" style="font-size:12px;">
+<thead><tr><th>Date</th><th>Task</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Aug 4</td><td>NEET Campaign update on Meta</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 4</td><td>Build Hub — /neet-dropper-coaching-bangalore/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 4</td><td>Terms &amp; Conditions page</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 4</td><td>"Best NEET Coaching..." page — continue</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 4</td><td>Backlink outreach research</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 4</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 4</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 4</td><td>Showcase toppers (content)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 4</td><td>NAP Citations — Koramangala</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Blocked</span></td></tr>
+<tr><td>Aug 5</td><td>NEET Repeater Campaign Launch</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 5</td><td>Build Hub — /neet-dropper-coaching-bangalore/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 5</td><td>"Best NEET Coaching..." page — continue</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 5</td><td>Build Hub — /sainik-coaching/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 5</td><td>Privacy Policy page</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 5</td><td>Banking/IBPS content</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 5</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Blocked</span></td></tr>
+<tr><td>Aug 5</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 5</td><td>FB school campaign launch</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 5</td><td>Navodaya/Sainik Ad Launch</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 6</td><td>NEET Repeater Campaign Launch</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 6</td><td>Build Hub — /neet-dropper-coaching-bangalore/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="5">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-table"></i> Section 01 · Full task log (2 of 4)</div>
+<h2 class="title">Aug 6 – Aug 10</h2>
+<p class="lede">The complete, unedited task log for this range — every task, exactly as logged.</p>
+<table class="data-table" style="font-size:12px;">
+<thead><tr><th>Date</th><th>Task</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Aug 6</td><td>"Best NEET Coaching..." page — continue</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 6</td><td>Build Hub — /sainik-coaching/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 6</td><td>Banking/IBPS content</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 6</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 6</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 7</td><td>Replace phone numbers in FB ads</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 7</td><td>Google NEET Ads Optimization</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 7</td><td>Build Hub — /neet-dropper-coaching-bangalore/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 7</td><td>"Best NEET Coaching..." page — continue</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 7</td><td>Build Hub — /sainik-coaching/</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 7</td><td>Banking/IBPS content</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 7</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 7</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 8</td><td>Competitor Research (SEO)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 8</td><td>NEET Droppers Page Outline</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 8</td><td>Content Coverage Research</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 8</td><td>Weekly pending works (carryover catch-up)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 8</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 8</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 10</td><td>Building SEO SOP</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 10</td><td>Competitor Research (SEO)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--blue); font-weight:600;">Ongoing</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="6">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-table"></i> Section 01 · Full task log (3 of 4)</div>
+<h2 class="title">Aug 10 – Aug 13</h2>
+<p class="lede">The complete, unedited task log for this range — every task, exactly as logged.</p>
+<table class="data-table" style="font-size:12px;">
+<thead><tr><th>Date</th><th>Task</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Aug 10</td><td>NEET Droppers Page Outline</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 10</td><td>Content Coverage Research</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 10</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 10</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 11</td><td>Competitor analysis (#2)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 11</td><td>NEET Droppers Page Outline</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 11</td><td>Content Coverage Research</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 11</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 11</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 12</td><td>Schema Markups</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 12</td><td>Research — Vibrant Moodbidri (competitor)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 12</td><td>Finalizing SOP</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 12</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--blue); font-weight:600;">Ongoing</span></td></tr>
+<tr><td>Aug 12</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--blue); font-weight:600;">Ongoing</span></td></tr>
+<tr><td>Aug 12</td><td>Google Ads Landing Page — Demo Booking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 12</td><td>Google Ads Landing Page — Admissions</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 12</td><td>Meta Ad Creatives — Transformation ads</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 12</td><td>Meta Ad Creatives — Topper/Result</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+<tr><td>Aug 12</td><td>Google Ads Quality Score Optimization</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 12</td><td>Google Ads Keyword Quality Score Optimization</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 13</td><td>Schema Markups</td><td class="num-cell" style="text-align:left;"><span style="color:var(--text-dim); font-weight:600;">To Do</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="7">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-table"></i> Section 01 · Full task log (4 of 4)</div>
+<h2 class="title">Aug 13 – Aug 14</h2>
+<p class="lede">The complete, unedited task log for this range — every task, exactly as logged.</p>
+<table class="data-table" style="font-size:12px;">
+<thead><tr><th>Date</th><th>Task</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Aug 13</td><td>Research — Vibrant Moodbidri (competitor)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 13</td><td>Meta Ad Creatives — Topper/Result</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 13</td><td>Planning to create pages</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 13</td><td>Planning monthly To-Dos</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 13</td><td>NEET Page — Updated Outline</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 14</td><td>Schema Markups</td><td class="num-cell" style="text-align:left;"><span style="color:var(--amber); font-weight:600;">Partially done</span></td></tr>
+<tr><td>Aug 14</td><td>Research — Vibrant Moodbidri (competitor)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Meta Ad Creatives — Topper/Result</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Planning monthly To-Dos</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Backlinks Outreach Plan</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Log Google Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Log Meta Ads Tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Influencer outreach</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Convert Topper images to WebP</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Add trust signals (faculty section)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Install/optimize Google Analytics tracking</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+<tr><td>Aug 14</td><td>Change phone numbers (site)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Change phone numbers (meta descriptions)</td><td class="num-cell" style="text-align:left;"><span style="color:var(--red); font-weight:600;">Pending</span></td></tr>
+<tr><td>Aug 14</td><td>Add 16 keywords — Navodaya campaign</td><td class="num-cell" style="text-align:left;"><span style="color:var(--green); font-weight:600;">Done</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide" data-section="Work Status" data-slide="8">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-repeat"></i> Section 01 · What's actually stuck</div>
+<h2 class="title">The same tasks, carried day after day</h2>
+<p class="lede">These aren't one-off delays — they show up across the log, open, never closing.</p>
+<table class="data-table">
+<thead><tr><th>Task</th><th>Span</th><th class="num-cell">Days open</th></tr></thead>
+<tbody>
+<tr><td>Hub page — /neet-dropper-coaching-bangalore/</td><td>Aug 4 → Aug 7</td><td class="num-cell hl">4 days, never Done</td></tr>
+<tr><td>Meta Ad Creatives — Topper/Result</td><td>Aug 12 → Aug 14</td><td class="num-cell hl">3+ days, never Done</td></tr>
+<tr><td>Competitor research — Vibrant Moodbidri</td><td>Aug 12 → Aug 14</td><td class="num-cell hl">3 days, never Done</td></tr>
+<tr><td>Schema Markups</td><td>Aug 12 → Aug 14</td><td class="num-cell hl">3 days, never Done</td></tr>
+<tr><td>NAP Citations — Koramangala</td><td>Blocked from Aug 4</td><td class="num-cell hl">Never attempted</td></tr>
+</tbody>
+</table>
+<div class="callout amber">
+<i class="ti ti-info-circle"></i>
+<div>Urgent/broken work — payment issues, access blocks, phone number corrections, Quality Score drops — has immediate consequences, so it always gets done. Growth work has none in the short term, so it silently loses, every time.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Why It Breaks" data-slide="9">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-alert-triangle"></i> Section 02</div>
+<h2 class="title">Why this keeps happening</h2>
+<div class="card-purple">
+<h3><i class="ti ti-user-x"></i>Root cause</h3>
+<ul>
+<li>Every discipline — SEO, Meta Ads, Google Ads, content, schema, backlinks, GBP — is handled by <b>one person, manually</b>, with no team to absorb volume</li>
+<li>Growth tasks need <b>uninterrupted blocks</b> of time to finish. Maintenance fires interrupt before that block ever happens</li>
+<li>There is <b>no delegation layer</b> — every task, large or small, strategic or administrative, routes through the same person</li>
+<li>Result: growth work restarts instead of finishing, day after day</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="10">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-check"></i> Section 02B · Scope</div>
+<h2 class="title">Everything routing through one person</h2>
+<p class="lede">Not a task list — a discipline list. Each of these is normally its own hire.</p>
+<div class="agenda-list">
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-search"></i></div>
+<div class="agenda-text"><b>Technical + Content SEO</b><span>On-page fixes, schema, internal linking, blog production, keyword strategy</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-map-pin"></i></div>
+<div class="agenda-text"><b>Local SEO / Google Business Profile</b><span>4 branches — posts, services, NAP consistency</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-speakerphone"></i></div>
+<div class="agenda-text"><b>Paid Ads — Google + Meta</b><span>Strategy, execution, creative, daily optimization</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-camera"></i></div>
+<div class="agenda-text"><b>Content Production</b><span>Photos, videos, copywriting across all branches</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-file-plus"></i></div>
+<div class="agenda-text"><b>Page Building</b><span>24 new hub, location &amp; course pages planned for August</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-shield-check"></i></div>
+<div class="agenda-text"><b>Trust / E-E-A-T Infrastructure</b><span>Policy pages, branch manager &amp; faculty profiles</span></div></div>
+<div class="agenda-item"><div class="agenda-icon"><i class="ti ti-presentation"></i></div>
+<div class="agenda-text"><b>Reporting &amp; Stakeholder Comms</b><span>Performance decks, tracking, meeting prep</span></div></div>
+</div>
+<div class="callout amber">
+<i class="ti ti-alert-triangle"></i>
+<div><b>At most coaching institutes, this is 3–4 separate hires</b> — an SEO executive, a paid-ads executive, a content/creative person, and a local-SEO/ops coordinator. Right now, it's one.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="11">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-layers"></i> Section 02B · Scale</div>
+<h2 class="title">The volume behind the volume</h2>
+<p class="lede">The 82-task snapshot is 11 days. This is the program underneath it — and it runs every month.</p>
+<div class="stat-trio-4">
+<div class="stat-block"><div class="big">200</div><div class="lbl">Backlink targets<br/>tracked</div></div>
+<div class="stat-block"><div class="big">24</div><div class="lbl">New pages<br/>to build</div></div>
+<div class="stat-block"><div class="big">114</div><div class="lbl">Keywords<br/>tracked</div></div>
+<div class="stat-block"><div class="big">20</div><div class="lbl">NAP citations<br/>(4 branches)</div></div>
+</div>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">24</div><div class="lbl">Content-collection items<br/>(4 branches)</div></div>
+<div class="stat-block"><div class="big">166</div><div class="lbl">GBP services<br/>(83 × 2 branches)</div></div>
+<div class="stat-block"><div class="big">43</div><div class="lbl">Page meta rewrites<br/>(42 done)</div></div>
+</div>
+<div class="callout blue">
+<i class="ti ti-info-circle"></i>
+<div><b>This is a running program, not a to-do list</b> — every number above recurs monthly. The tools + intern ask is sized against this scope, not against 15 days of logged tasks.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="12">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-tool"></i> Section 02B · Maintenance</div>
+<h2 class="title">The "maintenance" work isn't optional</h2>
+<p class="lede">It's not neglect of growth work — it's what has to happen first, or growth work has nothing solid to stand on.</p>
+<div class="card-purple">
+<h3><i class="ti ti-alert-octagon"></i>Forced, not chosen</h3>
+<ul>
+<li><b>Payment failures</b> instantly halt Google Ads spend — every hour down is lost lead volume</li>
+<li><b>Blocked NAP/citation access</b> stalls local visibility silently, with no error to notice</li>
+<li><b>Quality Score drops</b> raise cost-per-lead immediately if left unaddressed</li>
+<li><b>Thank-you page miscounting</b> organic leads as paid corrupts every ROI number until fixed</li>
+<li><b>Tracking/CSS bugs</b> mean decisions get made on wrong numbers until caught</li>
+</ul>
+</div>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div><b>Skip these and growth work doesn't just slow down</b> — it becomes unmeasurable, or the ad budget stops converting at all. This is why maintenance can't be deprioritized, even though it competes for the same hours as growth work.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="13">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-chart-pie"></i> Section 02B · The real split</div>
+<h2 class="title">The same 82 tasks, split by what kind of work they are</h2>
+<p class="lede">Not growth vs. maintenance — a sharper cut: what's forced, what's produced, and what's decided.</p>
+<div class="stat-trio">
+<div class="stat-block" style="border-color:var(--amber);"><div class="big" style="color:var(--amber);">25</div><div class="lbl">Maintenance<br/>(30%) — 56% completed</div></div>
+<div class="stat-block" style="border-color:var(--red);"><div class="big" style="color:var(--red);">47</div><div class="lbl">Execution<br/>(57%) — 19% completed</div></div>
+<div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">10</div><div class="lbl">Strategy<br/>(12%) — 40% completed</div></div>
+</div>
+<div class="grid-3">
+<div class="card-outline">
+<h3><i class="ti ti-tool"></i>Maintenance</h3>
+<ul>
+<li>Payment/access blocks, phone number corrections</li>
+<li>Quality Score fixes, daily tracking logs</li>
+<li><b>Gets done</b> — it's forced and urgent</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-list-check"></i>Execution</h3>
+<ul>
+<li>Backlink outreach, page building, content drafting</li>
+<li>Ad creative production, competitor research compilation</li>
+<li><b>Biggest bucket, worst completion</b> — this is what interns absorb</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-bulb"></i>Strategy</h3>
+<ul>
+<li>SOP design, content &amp; page planning</li>
+<li>Campaign structure, reviewing data, final calls</li>
+<li><b>Only 12% of logged work</b> — and still gets bumped</li>
+</ul>
+</div>
+</div>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div><b>Execution is 57% of all logged work and finishes at 19%.</b> That's the same gap the growth/maintenance stat showed earlier — but now it's clear exactly which piece needs more hands, not more motivation.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="14">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-calendar-time"></i> Section 02B · The weekly reality</div>
+<h2 class="title">What a full week actually looks like</h2>
+<p class="lede">Pulled straight from the Daily Calendar — not a busy week, a typical one.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">5 / 5</div><div class="lbl">Weekdays with tasks<br/>scheduled</div></div>
+<div class="stat-block"><div class="big">8–10</div><div class="lbl">Disciplines touched<br/>on a single day</div></div>
+<div class="stat-block"><div class="big">0</div><div class="lbl">Dedicated, uninterrupted<br/>blocks per week</div></div>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-list-details"></i>Every weekday, simultaneously</h3>
+<ul>
+<li>Backlink outreach for that day's 4 sites</li>
+<li>A blog post, mid-write or being published</li>
+<li>One SEO task (schema, internal links, technical fixes)</li>
+<li>GBP posts across 2–3 of the 4 branches</li>
+<li>A weekly "Big Task" — NAP citations or content collection for one branch</li>
+<li>Google Ads and Meta Ads check-ins, logged</li>
+</ul>
+</div>
+<div class="callout amber">
+<i class="ti ti-alert-triangle"></i>
+<div><b>No day in the calendar is set aside for just one discipline.</b> Every day is a context-switch between 8–10 of them — which is exactly why growth tasks that need a sustained block (a hub page, a full blog post) keep restarting instead of finishing.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Scope of the Role" data-slide="15">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-arrow-right"></i> Section 02B · The bridge</div>
+<h2 class="title">Where this maps to the ask</h2>
+<p class="lede">Three types of work, three different fixes — not one blanket "hire more people."</p>
+<div class="grid-3">
+<div class="card-purple">
+<h3><i class="ti ti-tool"></i>Maintenance → Tools</h3>
+<ul>
+<li>Faster diagnosis, proactive flags instead of reactive fire-fighting</li>
+<li>Some routine fixes move to interns too</li>
+</ul>
+</div>
+<div class="card-purple">
+<h3><i class="ti ti-users"></i>Execution → Interns</h3>
+<ul>
+<li>The 57%-of-work, 19%-completion bucket — this is the capacity problem</li>
+<li>Outreach, research compilation, schema paste-in, formatting</li>
+</ul>
+</div>
+<div class="card-purple">
+<h3><i class="ti ti-bulb"></i>Strategy → Protected time</h3>
+<ul>
+<li>Currently 12% of my time — should be far more</li>
+<li>What tools and interns free up is meant to land here</li>
+</ul>
+</div>
+</div>
+<div class="callout green">
+<i class="ti ti-check"></i>
+<div>This is the same ask as before — Semrush, Claude, 3–5 interns — now anchored to exactly which category of work each piece is meant to fix. The numbers on the next slides show what that's worth in time.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Time Cost" data-slide="16">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-clock"></i> Section 03</div>
+<h2 class="title">The real time cost — before vs. after</h2>
+<table class="data-table" style="font-size:12.5px;">
+<thead><tr><th>Work</th><th>Right now (manual)</th><th>With tools + team</th></tr></thead>
+<tbody>
+<tr><td>Competitor research — 1 competitor</td><td>3–4 full days</td><td class="hl">Same day</td></tr>
+<tr><td>Competitor research — all 5+ we track</td><td>15–20 days done one at a time</td><td class="hl">All 5+ in 1 day</td></tr>
+<tr><td>Blog / content writing (1 piece)</td><td>5 full days</td><td class="hl">2 days</td></tr>
+<tr><td>Backlink discovery for outreach</td><td>Manual search, low output, stalls</td><td class="hl">Instant relevant site list</td></tr>
+<tr><td>Technical SEO issues</td><td>Found late, reactively</td><td class="hl">Flagged proactively, scheduled crawl</td></tr>
+<tr><td>Local search visibility (Malleshwaram)</td><td>No visibility at all</td><td class="hl">Branch-level heatmap, immediate</td></tr>
+</tbody>
+</table>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div><b>Why this matters:</b> with 5+ competitors at 3–4 days each manually, a full competitive picture takes 3–4 weeks of nothing else — it was never realistically achievable. That's exactly why competitor research shows up "Partially done" repeatedly in the log instead of ever reaching "Done."</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Tools + Team" data-slide="17">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-tools"></i> Section 04</div>
+<h2 class="title">Tools and interns solve two different problems</h2>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-bolt"></i>Tools — solve a speed problem</h3>
+<ul>
+<li>Research and analysis that takes days gets compressed into hours</li>
+<li>Data is pulled directly instead of gathered manually, page by page</li>
+<li>Semrush (research/tracking) + Claude (drafting, synthesis, SOPs)</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-users"></i>Interns — solve a capacity problem</h3>
+<ul>
+<li>Even with faster tools, someone still has to execute</li>
+<li>Sending outreach, fixing listings, pasting schema, correcting data</li>
+<li>This is what removes execution volume from one person's day</li>
+</ul>
+</div>
+</div>
+<div class="callout blue">
+<i class="ti ti-info-circle"></i>
+<div>Neither alone is enough: faster research doesn't help if the same person still executes everything after. More hands alone doesn't help if research still takes days per competitor. Both are needed together.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Tools + Team" data-slide="18">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-users"></i> Section 04</div>
+<h2 class="title">Who owns what</h2>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-briefcase"></i>Interns own</h3>
+<ul>
+<li>NAP citation building and fixing</li>
+<li>Backlink outreach — sending, follow-ups, tracking</li>
+<li>Competitor research compilation (using Semrush, on my priorities)</li>
+<li>Content research compilation for page briefs</li>
+<li>Schema markup paste-in</li>
+<li>Image formatting, tracking log updates, data corrections</li>
+</ul>
+</div>
+<div class="card-purple">
+<h3><i class="ti ti-target"></i>I own</h3>
+<ul>
+<li>Campaign strategy and structure</li>
+<li>Creative direction and ad script writing</li>
+<li>Hub page and content strategy — what gets built and why</li>
+<li>Actual page writing/building</li>
+<li>Reviewing and acting on the data tools and interns surface</li>
+<li>Reporting and final decisions</li>
+</ul>
+</div>
+</div>
+<div class="callout green">
+<i class="ti ti-check"></i>
+<div><b>The core shift:</b> right now I do all of both columns — which is exactly why growth work stalls. This split means maintenance work stops interrupting growth and strategy work.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Tracking Scope" data-slide="19">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-search"></i> Section 05</div>
+<h2 class="title">What we'll track</h2>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-world"></i>Organic SEO — full coverage</h3>
+<ul>
+<li>114 keywords, all 4 categories</li>
+<li>NEET · Navodaya/Sainik/RMS · School Tuition · Other Competitive Exams</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-map-pin"></i>Local Pack — Malleshwaram pilot</h3>
+<ul>
+<li>Priority categories: NEET, Navodaya, Sainik, RMS</li>
+<li>Expand to remaining 3 branches after pilot results</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Tracking Scope" data-slide="20">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-calendar"></i> Section 05</div>
+<h2 class="title">Monthly workflow</h2>
+<div class="timeline-row">
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-refresh"></i></div><h5>Weekly</h5><p>Ranking movement, Local Pack, competitor changes</p></div>
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-calendar-week"></i></div><h5>Bi-weekly</h5><p>Keyword research, content opportunities, technical review</p></div>
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-calendar-event"></i></div><h5>Monthly</h5><p>Full 114-keyword review, backlink review, next month's priorities</p></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Budget" data-slide="21">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-users"></i> Section 06</div>
+<h2 class="title">Team ask</h2>
+<div class="stat-trio">
+<div class="stat-block" style="border-color:var(--pink);"><div class="big" style="color:var(--pink-2);">₹5,000</div><div class="lbl">Per intern / month</div></div>
+<div class="stat-block"><div class="big">3–5</div><div class="lbl">Interns requested</div></div>
+<div class="stat-block"><div class="big">3</div><div class="lbl">Month pilot</div></div>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-list-check"></i>Scope</h3>
+<ul>
+<li>NAP citations, backlink outreach execution, competitor research compilation</li>
+<li>Content research, schema paste-in, image formatting, tracking logs, data corrections</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Budget" data-slide="22">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-cash"></i> Section 06</div>
+<h2 class="title">3-month budget</h2>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-tool"></i>Monthly tools</h3>
+<table class="mini-table">
+<tr><td>Semrush Pro</td><td class="hl">₹11,600</td></tr>
+<tr><td>Semrush Local Base (Malleshwaram pilot + buffer)</td><td class="hl">₹2,900</td></tr>
+<tr><td>Claude subscription</td><td class="hl">₹2,200</td></tr>
+<tr><td><b>Subtotal</b></td><td class="hl"><b>₹16,700</b></td></tr>
+</table>
+</div>
+<div class="card-purple">
+<h3><i class="ti ti-users"></i>3-month totals</h3>
+<table class="mini-table">
+<tr><td>Minimum (3 interns)</td><td class="hl">₹95,100</td></tr>
+<tr><td>Target (5 interns)</td><td class="hl">₹1,25,100</td></tr>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Plan" data-slide="23">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-route"></i> Section 07</div>
+<h2 class="title">The 3-month plan</h2>
+<div class="timeline-row">
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-1"></i></div><h5>Month 1 — Setup</h5><p>Tools live, baseline recorded, interns onboarded, backlog clearance begins</p></div>
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-2"></i></div><h5>Month 2 — Ramp</h5><p>Interns running independently, my time shifts to strategy/building</p></div>
+<div class="timeline-node"><div class="timeline-dot"><i class="ti ti-3"></i></div><h5>Month 3 — Results</h5><p>Full comparison vs. baseline, scale decision</p></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Impact" data-slide="24">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-sparkles"></i> Section 08</div>
+<h2 class="title">Expected impact</h2>
+<div class="callout green">
+<i class="ti ti-trending-up"></i>
+<div>Tasks currently stuck 3–5+ days compress into a single sitting</div>
+</div>
+<div class="callout blue">
+<i class="ti ti-chart-bar"></i>
+<div>Consistent, automated ranking data replaces ad hoc manual checks</div>
+</div>
+<div class="callout amber">
+<i class="ti ti-target-arrow"></i>
+<div>Time freed from manual research and maintenance redirects fully to growth, publishing, and strategy</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Roadmap &amp; Close" data-slide="25">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-hand-stop"></i> Section 09 · Close</div>
+<h2 class="title">The ask</h2>
+<div class="card-purple">
+<h3><i class="ti ti-checkbox"></i>Approve</h3>
+<ul>
+<li>3-month budget: ₹95,100 (minimum) – ₹1,25,100 (target)</li>
+<li>Semrush Pro + Semrush Local Base (Malleshwaram pilot) + Claude subscription</li>
+<li>3–5 interns at ₹5,000/month each</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-report"></i>What we'll report back at Month 3</h3>
+<ul>
+<li>Growth-task completion rate vs. 18% baseline</li>
+<li>Malleshwaram ranking movement — organic and Local Pack</li>
+<li>Backlink and content output volume</li>
+<li>Recommendation on scaling to the remaining 3 branches</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="26">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-alert-circle"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">This isn't hypothetical — it's happening right now</h2>
+<p class="lede">A live, unresolved example of the exact problem this deck is about — playing out in real time, as this proposal is being written.</p>
+<div class="stat-trio">
+<div class="stat-block" style="border-color:var(--red);"><div class="big" style="color:var(--red);">~₹700</div><div class="lbl">Per lead right now<br/>(Meta + Google)</div></div>
+<div class="stat-block" style="border-color:var(--amber);"><div class="big" style="color:var(--amber);">~₹680</div><div class="lbl">Per lead, same window<br/>last year (post-NEET)</div></div>
+<div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">~₹150</div><div class="lbl">Where it stabilized<br/>within 2–3 months</div></div>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-target-arrow"></i>The ask from leadership</h3>
+<ul>
+<li>Rakesh and Jyothi want NEET webinar leads capped at <b>≤100</b>, cheaply</li>
+<li>Umair pulled last year's data — this exact seasonal pattern already happened once, and it's not a performance problem</li>
+<li>Right now is the expensive window: every coaching institute in the city is bidding on the same post-exam demand spike</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="27">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-help-circle"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">The one number we're missing</h2>
+<div class="card-outline">
+<h3><i class="ti ti-users"></i>Influencer collab — the gap</h3>
+<ul>
+<li>Umair proposed <b>₹5,000/admission</b> for an influencer collab; stakeholders will only approve up to <b>₹1,000/admission</b></li>
+<li>Umair's assessment: ₹1,000 is very unlikely to attract a serious education influencer, especially against competitors offering more</li>
+</ul>
+</div>
+<div class="callout blue">
+<i class="ti ti-calculator"></i>
+<div>At ₹1,000/lead, if it takes 2 leads to convert 1 admission, that's a <b>₹2,000 CAC per admission</b>. Whether that's profitable depends entirely on actual revenue/margin per NEET admission — a number not yet in hand.</div>
+</div>
+<div class="callout green">
+<i class="ti ti-message-question"></i>
+<div><b>The ask:</b> "What's our actual revenue per NEET admission, so we can calculate the real breakeven CAC — instead of debating a lead-cost number in isolation?" Everything else in this section — video budget, influencer terms — is downstream of this number.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="28">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-video"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">Why we can't know the winning creative in advance</h2>
+<div class="card-purple">
+<h3><i class="ti ti-flask"></i>The plan</h3>
+<ul>
+<li>Record up to <b>10 experimental videos</b> — not static ads — across a range of hooks and angles</li>
+<li>We don't know in advance which creative will perform; this requires real experimentation, not a guess</li>
+<li>Static ads alone won't produce the signal needed — this is specifically why video is being proposed over static creative</li>
+</ul>
+</div>
+<div class="callout amber">
+<i class="ti ti-shield-check"></i>
+<div><b>A bounded commitment, not open-ended spend:</b> 10 concepts, tested over a fixed window, capped at a fixed total budget — no single video judged a failure until at least a minimum number have run. This is what makes an experimentation budget approvable.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="29">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-bulb"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">What the webinar actually is</h2>
+<p class="lede">The strongest, most ready-to-use asset in this section — a one-minute explanation of the real conversion mechanic.</p>
+<div class="card-purple" style="padding:28px;">
+<h3><i class="ti ti-quote"></i>In one minute</h3>
+<p style="font-size:14.5px; line-height:1.75; color:var(--text);">"We're not selling the webinar. We're using it to build trust with NEET students who are already warm — they've shown interest through our ads. In the session, we help them directly: real strategy, real guidance, things they can use whether or not they join us. Kids don't make the enrollment decision or hold the budget — parents do. So our job in the room isn't to pitch, it's to make the student walk out impressed enough to go home and tell their parents 'this is where I want to study.' That's the actual conversion event — not a sign-up in the room."</p>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="30">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-help-circle"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">Still unresolved: who is this webinar for?</h2>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div>Not yet decided — is this for <b>warm ad-registrants</b> (people who already engaged with current ads) or a <b>cold influencer-sourced audience</b> (per the collab proposal)? These are different funnels, with different economics and different scripts. This needs resolving before the section's other numbers — CAC, ad spend — can be fully locked in.</div>
+</div>
+<div class="grid-2">
+<div class="card-outline">
+<h3><i class="ti ti-flame"></i>Warm ad-registrants</h3>
+<ul>
+<li>Already engaged with current NEET ads</li>
+<li>Higher intent, smaller pool, current CPL applies</li>
+</ul>
+</div>
+<div class="card-outline">
+<h3><i class="ti ti-users-plus"></i>Cold influencer audience</h3>
+<ul>
+<li>Sourced via the influencer collab, if approved</li>
+<li>Larger reach, lower intent, needs a different script</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="31">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-brand-tiktok"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">10 video concepts — students</h2>
+<p class="lede">Naming a precise doubt beats a vague promise. Rows in pink are the strongest first-test candidates.</p>
+<table class="data-table" style="font-size:12.5px;">
+<thead><tr><th style="width:26px;">#</th><th>Concept</th><th>Angle</th></tr></thead>
+<tbody>
+<tr><td class="hl">1</td><td class="hl">Same score, second attempt</td><td class="hl">Why rank didn't move despite extra prep</td></tr>
+<tr><td>2</td><td>The mock test trap</td><td>Solving more papers without reviewing errors right</td></tr>
+<tr><td class="hl">3</td><td class="hl">Biology vs Physics anxiety</td><td class="hl">Which subject repeaters lose the most marks on, and why</td></tr>
+<tr><td>4</td><td>Burnout mid-prep</td><td>Studying but nothing sticking</td></tr>
+<tr><td>5</td><td>Time management lie</td><td>What actually changes scores beyond a timetable</td></tr>
+<tr><td>6</td><td>NCERT one more time?</td><td>Re-read NCERT or move to advanced material</td></tr>
+<tr><td class="hl">7</td><td class="hl">How toppers review mistakes</td><td class="hl">The 3-bucket error method, teased</td></tr>
+<tr><td>8</td><td>Rank vs Percentile confusion</td><td>What repeaters misunderstand about last year's result</td></tr>
+<tr><td>9</td><td>Is this attempt different?</td><td>What separates improvers from those who plateau</td></tr>
+<tr><td>10</td><td>Last 60 days panic</td><td>What to fix now vs. let go, this close to the exam</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="32">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-brand-tiktok"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">10 video concepts — parents</h2>
+<p class="lede">Rows in pink are the strongest first-test candidates.</p>
+<table class="data-table" style="font-size:12.5px;">
+<thead><tr><th style="width:26px;">#</th><th>Concept</th><th>Angle</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Is repeating even worth it?</td><td>Honest data on repeat-attempt improvement rates</td></tr>
+<tr><td class="hl">2</td><td class="hl">Why didn't last year's effort show results?</td><td class="hl">Effort vs. the right system</td></tr>
+<tr><td>3</td><td>Does my child need a repeat batch or self-study?</td><td>Diagnostic framing for parents</td></tr>
+<tr><td>4</td><td>What's different this time?</td><td>Answering the fear of repeating the same mistake</td></tr>
+<tr><td>5</td><td>Silent stress, not talked about</td><td>The emotional toll on repeaters, parents often miss</td></tr>
+<tr><td>6</td><td>Coaching institute vs. self-study cost</td><td>Honest cost-benefit</td></tr>
+<tr><td class="hl">7</td><td class="hl">Questions to ask before choosing a repeater batch</td><td class="hl">Positions Elite IIT as the transparent option</td></tr>
+<tr><td>8</td><td>Faculty accountability</td><td>What tracking/reporting parents should expect</td></tr>
+<tr><td class="hl">9</td><td class="hl">One bad attempt doesn't define them</td><td class="hl">Reassurance-led, reduces parent guilt spiral</td></tr>
+<tr><td>10</td><td>What we tell every repeater parent, first meeting</td><td>Direct-to-camera faculty authority piece</td></tr>
+</tbody>
+</table>
+<div class="callout blue">
+<i class="ti ti-clapperboard"></i>
+<div><b>Production notes:</b> 15–30 seconds per video, one clear promise each — don't stack hooks. Same CTA text/link across all 10+10 so performance is comparable, without CTA as a variable. Caption everything — most viewers watch muted first.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Webinar Blocker" data-slide="33">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-user-check"></i> Section 10 · Webinar Blocker</div>
+<h2 class="title">How to convince someone to actually register</h2>
+<div class="card-outline">
+<ul>
+<li>Make the value concrete, not generic — "learn the exact 3-bucket error method toppers use," not "free NEET webinar"</li>
+<li>Use the burning-questions hook framework already built for the July webinar — pick 3 of the 12 sharpest questions per ad as hooks</li>
+<li>Borrow authority — lead with a named faculty member and their real results, not just "Elite IIT"</li>
+<li>Lower registration friction — one field (WhatsApp number) if possible, no long form</li>
+<li>Real urgency, not fake scarcity — tie it to the actual exam-cycle timing, not manufactured "only 10 seats left"</li>
+<li>Speak past the student to the parent in at least one line of copy — the parent is the actual decision-maker</li>
+<li>Build a reminder sequence (confirm → day-before → hour-before) — registration isn't attendance</li>
+</ul>
+</div>
+</div>
+</section>
+</div><!-- /deck -->
+<div class="nav-controls">
+<div class="nav-left">
+<span class="nav-brand"><i class="ti ti-school"></i><span class="brand-text">ELITE IIT</span></span>
+<span class="slide-counter"><b id="curNum">1</b> / <span id="totalNum">2</span></span>
+<button class="jump-btn" id="jumpBtn"><i class="ti ti-layout-grid"></i><span class="jump-text">Jump to slide</span></button>
+</div>
+<div class="nav-right">
+<div class="ctrl-btn" id="prevBtn"><i class="ti ti-chevron-left"></i></div>
+<div class="ctrl-btn" id="nextBtn"><i class="ti ti-chevron-right"></i></div>
+</div>
+</div>
+<div id="jumpMenu">
+<div class="jump-panel">
+<span class="jump-close" id="jumpClose">×</span>
+<h3><i class="ti ti-layout-grid"></i> Jump to any slide</h3>
+<div class="jump-grid" id="jumpGrid"></div>
+</div>
+</div>
+<script>
+function initDeck(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let cur = 0;
+  const totalNumEl = document.getElementById('totalNum');
+  const curNumEl = document.getElementById('curNum');
+  const progressFill = document.getElementById('progressFill');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function render(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===cur));
+    curNumEl.textContent = cur+1;
+    totalNumEl.textContent = slides.length;
+    progressFill.style.width = ((cur+1)/slides.length*100)+'%';
+    prevBtn.classList.toggle('disabled', cur===0);
+    nextBtn.classList.toggle('disabled', cur===slides.length-1);
+    slides[cur].scrollTop = 0;
+  }
+  function goTo(i){
+    if(i<0) i=0; if(i>=slides.length) i=slides.length-1;
+    cur=i; render();
+  }
+  prevBtn.addEventListener('click', ()=>goTo(cur-1));
+  nextBtn.addEventListener('click', ()=>goTo(cur+1));
+  document.addEventListener('keydown', (e)=>{
+    if(document.getElementById('jumpMenu').classList.contains('open')) return;
+    if(e.key==='ArrowRight'||e.key===' ') { e.preventDefault(); goTo(cur+1); }
+    if(e.key==='ArrowLeft') { e.preventDefault(); goTo(cur-1); }
+    if(e.key==='Escape') { document.getElementById('jumpMenu').classList.remove('open'); }
+  });
+
+  // Jump menu
+  const jumpBtn = document.getElementById('jumpBtn');
+  const jumpMenu = document.getElementById('jumpMenu');
+  const jumpClose = document.getElementById('jumpClose');
+  const jumpGrid = document.getElementById('jumpGrid');
+  jumpGrid.innerHTML = slides.map((s,i)=>{
+    const label = s.querySelector('h1,h2')?.textContent?.trim() || s.dataset.section || ('Slide '+(i+1));
+    const section = s.dataset.section || '';
+    return `<div class="jump-slide-btn" data-i="${i}"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${label} <span style="color:var(--text-dim); opacity:.7;">— ${section}</span></span></div>`;
+  }).join('');
+  jumpGrid.querySelectorAll('.jump-slide-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ goTo(parseInt(btn.dataset.i,10)); jumpMenu.classList.remove('open'); });
+  });
+  jumpBtn.addEventListener('click', ()=> jumpMenu.classList.add('open'));
+  jumpClose.addEventListener('click', ()=> jumpMenu.classList.remove('open'));
+  jumpMenu.addEventListener('click', (e)=>{ if(e.target===jumpMenu) jumpMenu.classList.remove('open'); });
+
+  // Touch swipe navigation (mobile)
+  const deckEl = document.getElementById('deck');
+  let touchStartX = 0, touchStartY = 0;
+  deckEl.addEventListener('touchstart', (e)=>{
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, {passive:true});
+  deckEl.addEventListener('touchend', (e)=>{
+    if(jumpMenu.classList.contains('open')) return;
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4){
+      if(dx < 0) goTo(cur+1); else goTo(cur-1);
+    }
+  }, {passive:true});
+
+  render();
+}
+document.addEventListener('DOMContentLoaded', initDeck);
+</script>
+</body>
+</html>
